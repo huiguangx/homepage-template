@@ -2,13 +2,7 @@
 
 <template>
   <div class="full-page">
-    <video
-      class="video-player"
-      src="@/assets/media/video/home_video.mp4"
-      muted
-      autoplay
-      loop
-    ></video>
+    <video class="video-player" src="@/assets/media/video/banner.mp4" muted autoplay loop></video>
     <div class="layer">
       <div class="slogan"></div>
     </div>

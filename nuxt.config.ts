@@ -2,9 +2,9 @@
 import { currentLocales } from './config/i18n'
 
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
-  devtools: { enabled: true },
-  modules: ["nuxt-windicss", "@nuxtjs/i18n"],
+  compatibilityDate: '2024-11-01',
+  devtools: { enabled: false },
+  modules: ['nuxt-windicss', '@nuxtjs/i18n'],
   i18n: {
     locales: currentLocales,
     langDir: 'locales',
@@ -18,14 +18,14 @@ export default defineNuxtConfig({
       // 用于存储当前语言环境的变量名
       cookieKey: 'i18n_redirected',
       // (建议用于改进SEO) -仅检测站点根路径(/)上的浏览器区域设置。只有当使用策略而不是“no_prefix”时才有效。
-      redirectOn: 'root'
-    }
+      redirectOn: 'root',
+    },
   },
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          api: "modern-compiler",
+          api: 'modern-compiler',
         },
       },
     },
@@ -33,4 +33,4 @@ export default defineNuxtConfig({
   app: {
     baseURL: process.env.BASE_URL || '/',
   },
-});
+})
