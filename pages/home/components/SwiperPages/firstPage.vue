@@ -1,13 +1,13 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+// import { ref, onMounted } from 'vue'
 
-// 动态生成带有时间戳的视频源地址
-const videoSrc = ref('')
+// // 动态生成带有时间戳的视频源地址
+// const videoSrc = ref('')
 
-onMounted(() => {
-  // 在组件挂载后设置视频源，确保服务端和客户端路径一致
-  videoSrc.value = '/_nuxt/assets/media/video/banner.mp4' + '?t=' + Date.now()
-})
+// onMounted(() => {
+//   // 在组件挂载后设置视频源，确保服务端和客户端路径一致
+//   videoSrc.value = '/_nuxt/assets/media/video/banner.mp4' + '?t=' + Date.now()
+// })
 </script>
 
 <template>
@@ -17,7 +17,7 @@ onMounted(() => {
       v-if="videoSrc"
       preload="auto"
       class="video-player"
-      :src="videoSrc"
+      src="@/assets/media/video/banner.mp4"
       muted
       autoplay
       loop
