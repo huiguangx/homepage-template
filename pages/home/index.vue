@@ -1,26 +1,22 @@
 <script lang="ts" setup>
-import Header from "@/layouts/Header/Header.vue";
-import Footer from "@/layouts/Footer/Footer.vue";
-import { swiperPageComponents } from "./components/SwiperPages/index";
-import {
-  Swiper,
-  SwiperSlide,
-  modules as swiperModules,
-} from "@/lib/vue-swiper";
-import type { Swiper as SwiperClass, SwiperOptions } from "swiper/types";
+import Header from '@/layouts/Header/Header.vue'
+import Footer from '@/layouts/Footer/Footer.vue'
+import { swiperPageComponents } from './components/SwiperPages/index'
+import { Swiper, SwiperSlide, modules as swiperModules } from '@/lib/vue-swiper'
+import type { Swiper as SwiperClass, SwiperOptions } from 'swiper/types'
 
 // swiper
 const swiperOptions: SwiperOptions = {
   modules: swiperModules,
-  direction: "vertical",
+  direction: 'vertical',
   mousewheel: true,
   slidesOffsetAfter: 200,
   resistanceRatio: 0,
-};
-const activePageIndex = ref(0);
+}
+const activePageIndex = ref(0)
 const onSlideChange = (swiper: SwiperClass) => {
-  activePageIndex.value = swiper.activeIndex;
-};
+  activePageIndex.value = swiper.activeIndex
+}
 </script>
 
 <template>
@@ -45,7 +41,7 @@ const onSlideChange = (swiper: SwiperClass) => {
 
 <style lang="scss" scoped>
 .swiper {
-  padding-top: 62px;
+  // padding-top: 62px;
   width: 100%;
   height: 100vh;
 }
