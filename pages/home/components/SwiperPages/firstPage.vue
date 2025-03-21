@@ -14,7 +14,6 @@
   <div class="full-page">
     <!-- 视频元素 -->
     <video
-      v-if="videoSrc"
       preload="auto"
       class="video-player"
       src="@/assets/media/video/banner.mp4"
