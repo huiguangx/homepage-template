@@ -1,0 +1,35 @@
+{
+  "name": "nuxt-tgame-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "start": "nuxt start",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "font-slice": "node font-slice.js"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^9.3.1",
+    "@types/swiper": "^6.0.0",
+    "dayjs": "^1.11.13",
+    "nuxt": "^3.14.1592",
+    "swiper": "^11.1.15",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "font-slice": "^1.0.2",
+    "install": "^0.13.0",
+    "nuxt-windicss": "^3.0.1",
+    "prettier": "^3.5.3",
+    "sass-embedded": "^1.82.0"
+  },
+  "engines": {
+    "pnpm": ">=7.0.0"
+  },
+  "engine-strict": true
+}
