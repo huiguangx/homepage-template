@@ -58,7 +58,7 @@
 
 .layer {
   position: absolute; /* 修改为绝对定位 */
-  height: 100%;
+  height: 100vh;
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
   z-index: 2; /* 设置较低的z-index值，使其位于视频之下 */
 
