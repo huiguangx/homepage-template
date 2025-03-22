@@ -24,7 +24,12 @@
     <div class="layer">
       <div class="slogan"></div>
     </div>
-    <div class="placeholder"></div>
+    <div class="placeholder">
+      <picture>
+        <source type="image/webp" srcset="@/assets/images/index/firstpage/placeholder.webp" />
+        <img src="@/assets/images/index/firstpage/placeholder.jpg" />
+      </picture>
+    </div>
   </div>
 </template>
 
@@ -48,10 +53,6 @@
   position: absolute; /* 修改为绝对定位 */
   height: 100vh;
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
-  background-image: url('~/assets/images/index/firstPage/placeholder.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 0; /* 设置较低的z-index值，使其位于视频之下 */
 }
 
