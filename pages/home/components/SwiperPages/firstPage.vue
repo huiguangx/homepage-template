@@ -25,10 +25,14 @@
       <div class="slogan"></div>
     </div>
     <div class="placeholder">
-      <picture>
+      <!-- <picture>
         <source type="image/webp" srcset="@/assets/images/index/firstpage/placeholder.webp" />
         <img src="@/assets/images/index/firstpage/placeholder.jpg" />
-      </picture>
+      </picture> -->
+      <NuxtPicture>
+        <source type="image/webp" srcset="@/assets/images/index/firstpage/placeholder.webp" />
+        <img src="@/assets/images/index/firstpage/placeholder.jpg" />
+      </NuxtPicture>
     </div>
   </div>
 </template>

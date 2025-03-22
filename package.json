@@ -12,6 +12,7 @@
     "font-slice": "node font-slice.js"
   },
   "dependencies": {
+    "@nuxt/image": "^1.10.0",
     "@nuxtjs/i18n": "^9.3.1",
     "@types/swiper": "^6.0.0",
     "dayjs": "^1.11.13",
