@@ -26,8 +26,8 @@
     </div>
     <div class="placeholder">
       <picture>
-        <source type="image/webp" srcset="~/assets/images/index/firstpage/placeholder.webp" />
-        <img src="~/assets/images/index/firstpage/placeholder.jpg" />
+        <source type="image/webp" srcset="~/assets/images/index/firstPage/placeholder.webp" />
+        <img src="~/assets/images/index/firstPage/placeholder.jpg" />
       </picture>
       <!-- <NuxtPicture>
         <source type="image/webp" srcset="@/assets/images/index/firstpage/placeholder.webp" />
