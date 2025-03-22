@@ -22,17 +22,13 @@
       loop
     ></video>
     <div class="layer">
-      <div class="slogan"></div>
+      <div class="slogan">星辰智能</div>
     </div>
     <div class="placeholder">
       <picture>
         <source type="image/webp" srcset="~/assets/images/index/firstPage/placeholder.webp" />
         <img src="~/assets/images/index/firstPage/placeholder.jpg" />
       </picture>
-      <!-- <NuxtPicture>
-        <source type="image/webp" srcset="@/assets/images/index/firstpage/placeholder.webp" />
-        <img src="@/assets/images/index/firstpage/placeholder.jpg" />
-      </NuxtPicture> -->
     </div>
   </div>
 </template>
@@ -72,10 +68,12 @@
     height: 162px;
     top: 40%;
     left: 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('~/assets/images/index/firstPage/slogan.webp');
+    font-size: large;
+    color: white;
+    // background-size: contain;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // background-image: url('~/assets/images/index/firstPage/slogan.webp');
     transform: translate(-50%, -50%);
     z-index: 2; /* 如果希望标语始终在最前面，可以增加这个属性 */
   }
