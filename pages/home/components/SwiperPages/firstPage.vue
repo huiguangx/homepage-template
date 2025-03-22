@@ -46,7 +46,7 @@
 
 .placeholder {
   position: absolute; /* 修改为绝对定位 */
-  height: 100%;
+  height: 100vh;
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
   background-image: url('~/assets/images/index/firstPage/placeholder.jpg');
   background-size: cover;
