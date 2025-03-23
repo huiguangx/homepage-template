@@ -1,19 +1,45 @@
-# FROM ccr.ccs.tencentyun.com/rootegg/node:20.12.2-pm2-alpine
+# compile stage
+FROM ccr.ccs.tencentyun.com/rootegg/node:pnpm-9.3.0 as build-stage
 
-# RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+WORKDIR /appinstall
 
-# RUN apk add --update --no-cache nginx
+COPY package*.json pnpm-lock.yaml ./
 
-# RUN npm install -g pnpm
+RUN pnpm install
 
-# WORKDIR /app
+COPY . .
 
-# COPY ./start.sh ./start.sh
+RUN pnpm run build
 
-# COPY ./ecosystem.config.js ./ecosystem.config.js
+# production stage
+FROM ccr.ccs.tencentyun.com/rootegg/node:21.7.3-pm2-nginx-alpine as production-stage
 
-# COPY ./app.js ./app.js
+WORKDIR /app
 
-# RUN chmod 777 ./start.sh
+COPY --from=build-stage /appinstall/.output/ .
 
-# CMD ["sh", "./start.sh"]
+RUN echo -e "module.exports = { \n\
+  apps: [{ \n\
+    name: 'app', \n\
+    exec_mode: 'cluster', \n\
+    instances: 'max', \n\
+    script: './server/index.mjs' \n\
+  }] \n\
+}" > ./ecosystem.config.js
+
+RUN echo -e "server {  \n\
+    listen       80; \n\
+    location /api/ { \n\
+        proxy_pass  http://172.16.0.10:8080/api/; \n\
+    } \n\
+    location / { \n\
+        proxy_pass  http://127.0.0.1:3000/; \n\
+    } \n\
+    gzip on; \n\
+    gzip_min_length 1k; \n\
+    gzip_http_version 1.1; \n\
+    gzip_comp_level 6; \n\
+    gzip_types text/plain application/x-javascript text/css application/xml application/javascript; \n\
+    gzip_vary on; \n\
+    access_log  /var/log/nginx/access.log ; \n\
+} " > /etc/nginx/http.d/default.conf
