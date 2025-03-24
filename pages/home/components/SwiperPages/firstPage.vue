@@ -13,14 +13,7 @@
 <template>
   <div class="full-page">
     <!-- 视频元素 -->
-    <video
-      preload="auto"
-      class="video-player"
-      src="@/assets/media/video/banner.mp4"
-      muted
-      autoplay
-      loop
-    ></video>
+    <video class="video-player" src="@/assets/media/video/banner.mp4" muted autoplay loop></video>
     <div class="layer">
       <div class="slogan">智能</div>
     </div>
