@@ -1,45 +1,23 @@
-# compile stage
-FROM ccr.ccs.tencentyun.com/rootegg/node:pnpm-9.3.0 as build-stage
+# 使用 Node.js 18 版本的官方镜像作为基础镜像
+FROM node:18
 
-WORKDIR /appinstall
+# 设置工作目录为 /data
+WORKDIR /data
 
-COPY package*.json pnpm-lock.yaml ./
+# 复制当前目录下的所有文件到容器的 /data 目录中
+COPY . /data
 
+# 创建 logs 目录
+RUN mkdir -p data/logs
+
+# 安装pm2
+RUN npm install pm2 -g
+
+# 全局安装 pnpm
+RUN npm install -g pnpm
+
+# 使用 pnpm 安装项目依赖
 RUN pnpm install
 
-COPY . .
-
+# 运行项目构建命令
 RUN pnpm run build
-
-# production stage
-FROM ccr.ccs.tencentyun.com/rootegg/node:21.7.3-pm2-nginx-alpine as production-stage
-
-WORKDIR /app
-
-COPY --from=build-stage /appinstall/.output/ .
-
-RUN echo -e "module.exports = { \n\
-  apps: [{ \n\
-    name: 'app', \n\
-    exec_mode: 'cluster', \n\
-    instances: 'max', \n\
-    script: './server/index.mjs' \n\
-  }] \n\
-}" > ./ecosystem.config.js
-
-RUN echo -e "server {  \n\
-    listen       80; \n\
-    location /api/ { \n\
-        proxy_pass  http://172.16.0.10:8080/api/; \n\
-    } \n\
-    location / { \n\
-        proxy_pass  http://127.0.0.1:3000/; \n\
-    } \n\
-    gzip on; \n\
-    gzip_min_length 1k; \n\
-    gzip_http_version 1.1; \n\
-    gzip_comp_level 6; \n\
-    gzip_types text/plain application/x-javascript text/css application/xml application/javascript; \n\
-    gzip_vary on; \n\
-    access_log  /var/log/nginx/access.log ; \n\
-} " > /etc/nginx/http.d/default.conf

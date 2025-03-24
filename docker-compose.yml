@@ -1,0 +1,24 @@
+services:
+  nuxt-container:
+    build: .
+    ports:
+      - '3000:3000' # 确保 Nuxt 服务端口映射正确
+    command: ['pm2-runtime', 'start', 'ecosystem.config.cjs']
+    networks:
+      - app-network
+
+  nginx-container:
+    image: nginx:latest
+    container_name: nuxt-nginx
+    ports:
+      - '80:80' # 仅保留 HTTP 80 端口
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf # 不需要证书挂载
+    depends_on:
+      - nuxt-container
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
