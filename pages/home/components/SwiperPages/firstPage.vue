@@ -22,13 +22,13 @@
       loop
     ></video>
     <div class="layer">
-      <div class="slogan">星辰智能</div>
+      <div class="slogan">智能</div>
     </div>
     <div class="placeholder">
-      <picture>
+      <!-- <picture>
         <source type="image/webp" srcset="~/assets/images/index/firstPage/placeholder.webp" />
         <img src="~/assets/images/index/firstPage/placeholder.jpg" />
-      </picture>
+      </picture> -->
     </div>
   </div>
 </template>
@@ -54,6 +54,7 @@
   height: 100vh;
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
   z-index: 0; /* 设置较低的z-index值，使其位于视频之下 */
+  background-color: rgb(24, 23, 23);
 }
 
 .layer {
