@@ -24,7 +24,7 @@ const onSlideChange = (swiper: SwiperClass) => {
     <template #header>
       <Header :class="`active-${activePageIndex}`"></Header>
     </template>
-    <swiper v-bind="swiperOptions" @slideChange="onSlideChange">
+    <!-- <swiper v-bind="swiperOptions" @slideChange="onSlideChange">
       <swiper-slide
         v-for="(page, index) in swiperPageComponents"
         :key="index"
@@ -32,7 +32,13 @@ const onSlideChange = (swiper: SwiperClass) => {
       >
         <component :is="page" :active="isActive"></component>
       </swiper-slide>
-    </swiper>
+    </swiper> -->
+    <component
+      v-for="(page, index) in swiperPageComponents"
+      :key="index"
+      :is="page"
+      :active="true"
+    ></component>
     <template #footer>
       <Footer></Footer>
     </template>
@@ -63,9 +69,7 @@ const onSlideChange = (swiper: SwiperClass) => {
     }
   }
   .footer {
-    position: absolute;
     width: 100%;
-    bottom: 0;
   }
 }
 </style>

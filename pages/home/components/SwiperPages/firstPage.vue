@@ -1,26 +1,53 @@
-<script setup>
-// import { ref, onMounted } from 'vue'
+<script lang="ts" setup>
+import { Swiper, SwiperSlide, modules as swiperModules } from '@/lib/vue-swiper'
+import type { Swiper as SwiperClass, SwiperOptions } from 'swiper/types'
 
-// // 动态生成带有时间戳的视频源地址
-// const videoSrc = ref('')
+// swiper
+const swiperOptions: SwiperOptions = {
+  autoplay: true,
+  modules: swiperModules,
+  direction: 'horizontal',
+  mousewheel: false,
+  slidesOffsetAfter: 200,
+  resistanceRatio: 0,
+  loop: true,
+}
+const activePageIndex = ref(0)
 
-// onMounted(() => {
-//   // 在组件挂载后设置视频源，确保服务端和客户端路径一致
-//   videoSrc.value = '/_nuxt/assets/media/video/banner.mp4' + '?t=' + Date.now()
-// })
+const onSlideChange = (swiper: SwiperClass) => {
+  activePageIndex.value = swiper.activeIndex
+}
 </script>
 
 <template>
   <div class="full-page">
     <!-- 视频元素 -->
-    <video
-      preload
-      class="video-player"
-      src="@/assets/media/video/banner.mp4"
-      muted
-      autoplay
-      loop
-    ></video>
+    <!-- <video class="video-player video-mobile" muted autoplay loop>
+      <source src="@/assets/media/video/banner-h5.mp4" type="video/mp4" />
+    </video>
+
+    <video class="video-player video-desktop" muted autoplay loop>
+      <source src="@/assets/media/video/banner.mp4" type="video/mp4" />
+    </video> -->
+
+    <swiper class="swiper" v-bind="swiperOptions" @slideChange="onSlideChange">
+      <swiper-slide>
+        <video class="video-player video-mobile" muted autoplay loop>
+          <source src="@/assets/media/video/banner-h5.mp4" type="video/mp4" />
+        </video>
+
+        <video class="video-player video-desktop" muted autoplay loop>
+          <source src="@/assets/media/video/banner.mp4" type="video/mp4" />
+        </video>
+      </swiper-slide>
+      <swiper-slide>
+        <picture>
+          <!-- <source type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg.webp" /> -->
+          <img src="~/assets/images/index/firstPage/index-s1-bg.png" />
+        </picture>
+      </swiper-slide>
+    </swiper>
+
     <div class="layer">
       <div class="slogan">智能</div>
     </div>
@@ -36,30 +63,53 @@
 <style lang="scss" scoped>
 .full-page {
   position: relative;
-  height: 100vh;
   width: 100%;
+  height: 100vh;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
 .video-player {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   top: 0; /* 修改为从顶部开始 */
   object-fit: cover;
   z-index: 1; /* 确保视频在玩家层之上 */
 }
 
-.placeholder {
-  position: absolute; /* 修改为绝对定位 */
-  height: 100vh;
-  width: 100%; /* 添加宽度以确保覆盖整个区域 */
-  z-index: 0; /* 设置较低的z-index值，使其位于视频之下 */
-  background-color: rgb(24, 23, 23);
+/* 小屏设备（宽度 <= 767px） */
+@media (max-width: 767px) {
+  .video-desktop {
+    display: none;
+  }
+  .video-mobile {
+    display: block;
+  }
 }
 
+/* 大屏设备（宽度 >= 768px） */
+@media (min-width: 768px) {
+  .video-desktop {
+    display: block;
+  }
+  .video-mobile {
+    display: none;
+  }
+}
+
+// .placeholder {
+//   position: absolute; /* 修改为绝对定位 */
+//   height: 100vh;
+//   width: 100%; /* 添加宽度以确保覆盖整个区域 */
+//   z-index: 0; /* 设置较低的z-index值，使其位于视频之下 */
+//   background-color: rgb(24, 23, 23);
+// }
+
 .layer {
-  position: absolute; /* 修改为绝对定位 */
-  height: 100vh;
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
   z-index: 2; /* 设置较低的z-index值，使其位于视频之下 */
 
