@@ -34,6 +34,7 @@ const onSlideChange = (swiper: SwiperClass) => {
       </swiper-slide>
     </swiper> -->
     <component
+      class="homepage"
       v-for="(page, index) in swiperPageComponents"
       :key="index"
       :is="page"
@@ -46,9 +47,8 @@ const onSlideChange = (swiper: SwiperClass) => {
 </template>
 
 <style lang="scss" scoped>
-.swiper {
-  // padding-top: 62px;
-  width: 100%;
+.homepage {
+  width: 100vw;
   height: 100vh;
 }
 
@@ -69,7 +69,7 @@ const onSlideChange = (swiper: SwiperClass) => {
     }
   }
   .footer {
-    width: 100%;
+    width: 100vw;
   }
 }
 </style>

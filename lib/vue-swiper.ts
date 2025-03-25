@@ -4,5 +4,5 @@ export { Swiper, SwiperSlide } from "swiper/vue";
 
 // swiper modules
 import "swiper/css/mousewheel";
-import { Mousewheel } from "swiper/modules";
-export const modules = [Mousewheel];
+import { Mousewheel, Autoplay } from "swiper/modules";
+export const modules = [Mousewheel, Autoplay];

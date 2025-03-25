@@ -1,10 +1,14 @@
 <script lang="ts" setup>
-import { Swiper, SwiperSlide, modules as swiperModules } from '@/lib/vue-swiper'
+import { Swiper, SwiperSlide, modules as swiperModules,  } from '@/lib/vue-swiper'
 import type { Swiper as SwiperClass, SwiperOptions } from 'swiper/types'
+import Autoplay from "swiper"
 
 // swiper
 const swiperOptions: SwiperOptions = {
-  autoplay: true,
+  autoplay: {
+    delay: 3000, // 每3秒自动切换
+    disableOnInteraction: false, // 用户交互后仍然继续自动播放
+  },
   modules: swiperModules,
   direction: 'horizontal',
   mousewheel: false,
@@ -41,13 +45,14 @@ const onSlideChange = (swiper: SwiperClass) => {
         </video>
       </swiper-slide>
       <swiper-slide>
-        <picture>
-          <!-- <source type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg.webp" /> -->
-          <img src="~/assets/images/index/firstPage/index-s1-bg.png" />
+        <picture class="full-image">
+          <source class="full-image" type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg-h5.webp" media="(max-width: 767px)" />
+          <source class="full-image" type="image/jpeg" srcset="~/assets/images/index/firstPage/index-s1-bg-h5.jpg" media="(max-width: 767px)" />
+          <source class="full-image" type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg.webp" />
+          <img class="full-image" src="~/assets/images/index/firstPage/index-s1-bg.jpg" />
         </picture>
       </swiper-slide>
     </swiper>
-
     <div class="layer">
       <div class="slogan">智能</div>
     </div>
@@ -108,6 +113,12 @@ const onSlideChange = (swiper: SwiperClass) => {
 //   z-index: 0; /* 设置较低的z-index值，使其位于视频之下 */
 //   background-color: rgb(24, 23, 23);
 // }
+
+.full-image {
+  width: 100%; /* 确保图片宽度为100% */
+  height: 100%; /* 确保图片高度为100% */
+  object-fit: cover; /* 确保图片覆盖整个区域 */
+}
 
 .layer {
   width: 100%; /* 添加宽度以确保覆盖整个区域 */
