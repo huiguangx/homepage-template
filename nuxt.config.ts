@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import path from 'path'
 import { currentLocales } from './config/i18n'
 
 export default defineNuxtConfig({
@@ -7,13 +8,14 @@ export default defineNuxtConfig({
   modules: ['nuxt-windicss', '@nuxtjs/i18n', '@nuxt/image', 'nuxt-gtag'],
   gtag: {
     id: import.meta.env.VITE_GTAG_ID,
+    enabled: true,
   },
   i18n: {
     locales: currentLocales,
     langDir: 'locales',
     defaultLocale: 'en',
     strategy: 'no_prefix',
-    vueI18n: './config/i18n.config.ts',
+    vueI18n: path.resolve(__dirname, './config/i18n.config.ts'),
     // 启用浏览器语言检测，以便在访问者第一次访问您的站点时自动将其重定向到首选语言环境。
     detectBrowserLanguage: {
       // 启动 cookie
