@@ -4,7 +4,10 @@ import { currentLocales } from './config/i18n'
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  modules: ['nuxt-windicss', '@nuxtjs/i18n', '@nuxt/image'],
+  modules: ['nuxt-windicss', '@nuxtjs/i18n', '@nuxt/image', 'nuxt-gtag'],
+  gtag: {
+    id: import.meta.env.VITE_GTAG_ID,
+  },
   i18n: {
     locales: currentLocales,
     langDir: 'locales',

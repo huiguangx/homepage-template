@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
+    "build": "nuxt build --dotenv .env.production",
+    "dev": "nuxt dev --dotenv .env.development",
     "generate": "nuxt generate",
     "start": "nuxt start",
     "preview": "nuxt preview",
@@ -17,6 +17,7 @@
     "@types/swiper": "^6.0.0",
     "dayjs": "^1.11.13",
     "nuxt": "^3.14.1592",
+    "nuxt-gtag": "3.0.2",
     "swiper": "^11.1.15",
     "vue": "latest",
     "vue-router": "latest"
@@ -32,5 +33,6 @@
   "engines": {
     "pnpm": ">=7.0.0"
   },
-  "engine-strict": true
+  "engine-strict": true,
+  "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c"
 }
