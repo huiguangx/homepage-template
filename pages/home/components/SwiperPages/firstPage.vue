@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Swiper, SwiperSlide, modules as swiperModules,  } from '@/lib/vue-swiper'
+import { Swiper, SwiperSlide, modules as swiperModules } from '@/lib/vue-swiper'
 import type { Swiper as SwiperClass, SwiperOptions } from 'swiper/types'
-import Autoplay from "swiper"
+import Autoplay from 'swiper'
 
 // swiper
 const swiperOptions: SwiperOptions = {
@@ -46,9 +46,23 @@ const onSlideChange = (swiper: SwiperClass) => {
       </swiper-slide>
       <swiper-slide>
         <picture class="full-image">
-          <source class="full-image" type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg-h5.webp" media="(max-width: 767px)" />
-          <source class="full-image" type="image/jpeg" srcset="~/assets/images/index/firstPage/index-s1-bg-h5.jpg" media="(max-width: 767px)" />
-          <source class="full-image" type="image/webp" srcset="~/assets/images/index/firstPage/index-s1-bg.webp" />
+          <source
+            class="full-image"
+            type="image/webp"
+            srcset="~/assets/images/index/firstPage/index-s1-bg-h5.webp"
+            media="(max-width: 767px)"
+          />
+          <source
+            class="full-image"
+            type="image/jpeg"
+            srcset="~/assets/images/index/firstPage/index-s1-bg-h5.jpg"
+            media="(max-width: 767px)"
+          />
+          <source
+            class="full-image"
+            type="image/webp"
+            srcset="~/assets/images/index/firstPage/index-s1-bg.webp"
+          />
           <img class="full-image" src="~/assets/images/index/firstPage/index-s1-bg.jpg" />
         </picture>
       </swiper-slide>
