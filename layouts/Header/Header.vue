@@ -1,7 +1,5 @@
-<script setup></script>
-
 <template>
-  <div class="header flex justify-between items-center">
+  <div class="w-100vw header flex justify-between items-center">
     <!-- logo -->
     <div class="logo">
       <a class="logo-link" href="/news" title="星辰智能">星辰智能</a>
@@ -55,7 +53,7 @@ onMounted(() => {
   --header-text-color: #ffffff;
   --header-bg-color: transparent;
   position: fixed;
-  padding: 0 120px;
+  padding: 0 16px;
   top: 0;
   left: 0;
   width: 100%;

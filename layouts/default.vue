@@ -4,7 +4,7 @@ import Footer from './Footer/Footer.vue'
 </script>
 
 <template>
-  <div class="default-layout">
+  <div>
     <slot name="header">
       <Header></Header>
     </slot>
@@ -15,8 +15,4 @@ import Footer from './Footer/Footer.vue'
   </div>
 </template>
 
-<style lang="scss" scoped>
-.default-layout {
-  height: 100vh;
-}
-</style>
+<style lang="scss" scoped></style>
