@@ -34,7 +34,7 @@ const onSlideChange = (swiper: SwiperClass) => {
       </swiper-slide>
     </swiper> -->
     <component
-      class="w-full"
+      class=""
       v-for="(page, index) in swiperPageComponents"
       :key="index"
       :is="page"
