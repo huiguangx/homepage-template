@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   // modules: ['nuxt-windicss', '@nuxtjs/i18n', '@nuxt/image', 'nuxt-gtag', '@nuxtjs/tailwindcss'],
   modules: ['@nuxtjs/i18n', '@nuxt/image', 'nuxt-gtag', '@nuxtjs/tailwindcss'],
   gtag: {
-    id: import.meta.env.VITE_GTAG_ID,
-    enabled: true,
+    id: process.env.NODE_ENV === 'production' ? import.meta.env.VITE_GTAG_ID : null,
+    enabled: process.env.NODE_ENV === 'production',
   },
   i18n: {
     locales: currentLocales,
